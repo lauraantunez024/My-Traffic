@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+/// Laura's JS
 var firstScreen = document.querySelector(".first-screen")
 var secondScreen = document.querySelector(".second-screen")
 var form = document.querySelector("#search-form")
@@ -15,7 +15,9 @@ form.addEventListener("submit", function(event) {
 
 
 
-=======
+///Fernando's API Call
+
+
 $(document).ready(function () {
     var apiKey = "I28sS2O89AHgGz3gUm9lZBAXNk2HwB0N";
     var baseUrl = "api.tomtom.com"
@@ -40,4 +42,4 @@ $(document).ready(function () {
 
 
 })
->>>>>>> 4f7722c83b1c17184fcda6e0409fec2e71a7d2d5
+// >>>>>>> 4f7722c83b1c17184fcda6e0409fec2e71a7d2d5
