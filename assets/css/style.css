@@ -1,0 +1,30 @@
+body {
+    background-color: #F1DDBF;
+}
+
+.card {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    padding: 30px;
+    background-color: #9FC088;
+    color: white;
+    text-align: center;
+    flex: 0 0 400px;
+    margin-top: 80px;
+    width: 800px;
+    height: auto;
+    margin:auto;
+    margin-top: 80px;
+    border: #525E75 5px solid;
+  }
+
+.card button{
+    margin: auto;
+}
+
+::placeholder {
+    color: white; 
+    margin: auto;
+}
