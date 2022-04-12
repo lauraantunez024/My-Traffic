@@ -13,21 +13,13 @@ form.addEventListener("submit", function(event) {
 
 });
 
-
-
-
-
-
-
-
-
 const settings = {
 	"async": true,
 	"crossDomain": true,
-	"url": "https://us-real-estate.p.rapidapi.com/location/for-sale-nearby-areas-by-postal-code?postal_code=10022",
+	"url": "https://realty-in-us.p.rapidapi.com/properties/list-for-sale?state_code=GA&city=Atlanta&offset=0&limit=500&sort=relevance",
 	"method": "GET",
 	"headers": {
-		"X-RapidAPI-Host": "us-real-estate.p.rapidapi.com",
+		"X-RapidAPI-Host": "realty-in-us.p.rapidapi.com",
 		"X-RapidAPI-Key": "395cc9c100mshac427d1df6a23e9p130807jsn016fa6b52c1c"
 	}
 };
@@ -37,8 +29,28 @@ $.ajax(settings).done(function (response) {
 });
 
 
-///Fernando's API Call
 
+
+
+// Plan B API VVVV
+
+// const settings = {
+// 	"async": true,
+// 	"crossDomain": true,
+// 	"url": "https://us-real-estate.p.rapidapi.com/location/for-sale-nearby-areas-by-postal-code?postal_code=10022",
+// 	"method": "GET",
+// 	"headers": {
+// 		"X-RapidAPI-Host": "us-real-estate.p.rapidapi.com",
+// 		"X-RapidAPI-Key": "395cc9c100mshac427d1df6a23e9p130807jsn016fa6b52c1c"
+// 	}
+// };
+
+// $.ajax(settings).done(function (response) {
+// 	console.log(response);
+// });
+
+
+///Fernando's API Call
 
 // $(document).ready(function () {
 //     var apiKey = "I28sS2O89AHgGz3gUm9lZBAXNk2HwB0N";
