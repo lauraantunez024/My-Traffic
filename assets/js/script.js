@@ -13,6 +13,9 @@ form.addEventListener("submit", function(event) {
 
 });
 
+
+// This API shows properties that are listed for sale in Atlanta Georgia. We can only do one city and state at a time so we should talk about which one. 
+
 const settings = {
 	"async": true,
 	"crossDomain": true,
