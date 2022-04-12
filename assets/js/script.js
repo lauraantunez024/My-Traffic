@@ -1,7 +1,9 @@
 /// Laura's JS
 var firstScreen = document.querySelector(".first-screen")
 var mapCont = document.querySelector(".map-holder")
+var sidebar = documemnt.querySelector(".sidebar")
 var form = document.querySelector("#search-form")
+var secondScreen = document.querySelector(".second-screen")
 
 
 
@@ -10,6 +12,8 @@ form.addEventListener("submit", function(event) {
     event.preventDefault();
     firstScreen.style.display = "none";
     mapCont.style.display="block";
+	sidebar.style.display="block";
+
 
 });
 
@@ -32,25 +36,6 @@ $.ajax(settings).done(function (response) {
 });
 
 
-
-
-
-// Plan B API VVVV
-
-// const settings = {
-// 	"async": true,
-// 	"crossDomain": true,
-// 	"url": "https://us-real-estate.p.rapidapi.com/location/for-sale-nearby-areas-by-postal-code?postal_code=10022",
-// 	"method": "GET",
-// 	"headers": {
-// 		"X-RapidAPI-Host": "us-real-estate.p.rapidapi.com",
-// 		"X-RapidAPI-Key": "395cc9c100mshac427d1df6a23e9p130807jsn016fa6b52c1c"
-// 	}
-// };
-
-// $.ajax(settings).done(function (response) {
-// 	console.log(response);
-// });
 
 
 ///Fernando's API Call
