@@ -1,7 +1,9 @@
 /// Laura's JS
 var firstScreen = document.querySelector(".first-screen")
 var mapCont = document.querySelector(".map-holder")
+var sidebar = documemnt.querySelector(".sidebar")
 var form = document.querySelector("#search-form")
+var secondScreen = document.querySelector(".second-screen")
 
 //tomtom perameters
 const TomBUrl = "https://api.tomtom.com/";
@@ -37,5 +39,7 @@ form.addEventListener("submit", function(event) {
     event.preventDefault();
     firstScreen.style.display = "none";
     mapCont.style.display="block";
+	sidebar.style.display="block";
+
 
 });
