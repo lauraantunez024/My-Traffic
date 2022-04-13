@@ -5,8 +5,48 @@ var sidebar = documemnt.querySelector(".sidebar")
 var form = document.querySelector("#search-form")
 var secondScreen = document.querySelector(".second-screen")
 
+//tomtom perameters
+const TomBUrl = "https://api.tomtom.com/";
+const TApiKey = "I28sS2O89AHgGz3gUm9lZBAXNk2HwB0N";
+const versionNumber = 4;
+const style = "absolute";
+const zoom = 10;
+const format = "json";
+var point = "33.03,-93.15";
 
+//realty parameters
+const RltBUrl = "https://realty-in-us.p.rapidapi.com/";
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Host': 'realty-in-us.p.rapidapi.com',
+		'X-RapidAPI-Key': '395cc9c100mshac427d1df6a23e9p130807jsn016fa6b52c1c'
+	}
+};
+// This API shows properties that are listed for sale in Atlanta Georgia. We can only do one city and state at a time so we should talk about which one. 
+let realtyData = fetch('https://realty-in-us.p.rapidapi.com/properties/list-for-sale?state_code=NY&city=New%20York%20City&offset=0&limit=200&sort=relevance', options)
+	.then(response => response.json())
+	.then(response => console.log(response))
+	.catch(err => console.error(err));
+let trafficData = fetch(`${TomBUrl}traffic/services/${versionNumber}/flowSegmentData/${style}/${zoom}/${format}?key=${TApiKey}&point=${point}`)
 
+//promises both api keys data then returns them
+Promise.all([
+	realtyData,
+	trafficData
+]).then(function (responses) {
+	// Get a JSON object from each of the responses
+	return Promise.all(responses.map(function (response) {
+		return response.json();
+	}));
+}).then(function (data) {
+	// Log the data to the console
+	// You would do something with both sets of data here
+	console.log(data);
+}).catch(function (error) {
+	// if there's an error, log it
+	console.log(error);
+});
 
 form.addEventListener("submit", function(event) {
     event.preventDefault();
@@ -18,46 +58,3 @@ form.addEventListener("submit", function(event) {
 });
 
 
-// This API shows properties that are listed for sale in Atlanta Georgia. We can only do one city and state at a time so we should talk about which one. 
-
-const settings = {
-	"async": true,
-	"crossDomain": true,
-	"url": "https://realty-in-us.p.rapidapi.com/properties/list-for-sale?state_code=GA&city=Atlanta&offset=0&limit=500&sort=relevance",
-	"method": "GET",
-	"headers": {
-		"X-RapidAPI-Host": "realty-in-us.p.rapidapi.com",
-		"X-RapidAPI-Key": "395cc9c100mshac427d1df6a23e9p130807jsn016fa6b52c1c"
-	}
-};
-
-$.ajax(settings).done(function (response) {
-	console.log(response);
-});
-
-
-
-
-///Fernando's API Call
-
-// $(document).ready(function () {
-//     var apiKey = "I28sS2O89AHgGz3gUm9lZBAXNk2HwB0N";
-//     var baseUrl = "api.tomtom.com"
-//     var versionNumber = 4;
-//     var style = "absolute";
-//     var zoom = 10;
-//     var format = "json";
-//     var point = "33.03,-93.15";
-//     var urlKey = `https://${baseUrl}/traffic/services/${versionNumber}/flowSegmentData/${style}/${zoom}/${format}?key=${apiKey}&point=${point}`//&unit={unit}&thickness={thickness}&openLr={boolean}&jsonp={jsonp}
-
-//     $.ajax({
-//         url: urlKey, success: function (result) {
-//             console.log (result)
-//         }
-//     });
-
-
-
-
-// })
-// >>>>>>> 4f7722c83b1c17184fcda6e0409fec2e71a7d2d5
