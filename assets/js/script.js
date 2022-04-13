@@ -31,7 +31,7 @@ let realtyData = fetch('https://realty-in-us.p.rapidapi.com/properties/list-for-
 	.catch(err => console.error(err));
 let trafficData = fetch(`${TomBUrl}traffic/map/${versionNumber}/tile/flow/${style}/${zoom}/${x}/${y}.${format}?key=${TApiKey}`)
 
-
+//abstraction and modularization
 
 form.addEventListener("submit", function(event) {
     event.preventDefault();
