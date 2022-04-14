@@ -34,3 +34,7 @@ body {
 input {
     margin: auto;
 }
+
+nav {
+    background-color: #9FC088;
+}
