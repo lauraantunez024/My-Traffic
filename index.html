@@ -13,36 +13,57 @@
 </head>
 
 <body>
+<main>
 
-<div class = "first-screen card" style="display:none">
-      <h1 class="text-primary">Find Real Estate Traffic Data</h1>
-      <form id="search-form" class="form w-100">
-        <input id="search-input" class="form-input w-100" type="text" placeholder="City or Zipcode">
-        <button class="btn btn-info btn-block">Submit</button>
-      </form>
-</div>
-
-<div class = "second-screen container">
+  <div class = "first-screen card" style="display:none">
+    <h1 class="text-primary">Find Real Estate Traffic Data</h1>
+    <form id="search-form" class="form w-100">
+      <input id="search-input" class="form-input w-100" type="text" placeholder="City or Zipcode">
+      <button class="btn btn-info btn-block">Submit</button>
+    </form>
+  </div>
+  
+  <div class = "second-screen container">
     <!-- navbar code goes here with div class = card -->
     <div class="row">
-<div class = "map-holder card col s3"> 
-    <div class=""></div>
-    <h4>usr input</h4>
-    <h6>Search another area.</h6>
-    <input type="text" placeholder=" Search...." name="search"> 
-</div>
-<div class = "sidebar card col s8 offset-s1"> 
-  <div class=""></div>
-  <button class="btn btn-info btn-block">See traffic data</button>
-
-  <h3>This is where the map will go.</h3>
-    <div class="map-container">
+      <div class = "sidebar card col s3 green lighten-1"> 
+        <div class=""></div>
+        <h4>search results</h4>
+        <input type="text" placeholder=" Search...." name="search"> 
+        <div id="api-info">
+          <br>
+          <p> address, bedroom, bath, list price?</p>
+        </div>
+      </div>
+      <div class = "map card col s8 offset-s1 green lighten-1"> 
+        <div class=""></div>
+        <button class="btn btn-info btn-block">See traffic data</button>
+        
+        <h3>This is where the map will go.</h3>
+        <div class="map-container">
+          
+        </div>
+      </div>
       
-    </div>
-</div>
-
+</main>
  
+<footer class="page-footer green lighten-1">
+  <div class="container">
+  
 
+    <div class="row">
+      <div class="col 16 s12" id = "author-section">
+        <h5 class="white-text">Authors and their Github Links</h5>
+      
+         <a class = "text-lighten-3" href="https://github.com/lauraantunez024">Laura Antunez</a>
+         <a class = "text-lighten-3" href="https://github.com/MRBorders">Matthew Borders</a>
+         <a class = "text-lighten-3" href="https://github.com/FMartinez59">Fernando Martinez</a>
+         <a class = "text-lighten-3" href="https://github.com/Jacksonwillis22">Jackson Willis</a>
+        
+      </div>
+    </div>
+  </div>
+</footer>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="./assets/js/script.js"></script>
