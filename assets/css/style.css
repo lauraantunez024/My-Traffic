@@ -33,6 +33,7 @@ input {
     margin: auto;
 }
 
+<<<<<<< HEAD
 footer {
     border: #525E75 5px solid;
 
@@ -49,4 +50,8 @@ a {
 
 a:hover {
     color: #525E75;
+=======
+nav {
+    background-color: #9FC088;
+>>>>>>> c33e8c3c322be3922adf294db5f58a365deced79
 }
