@@ -1,9 +1,10 @@
 /// Laura's JS
 var firstScreen = document.querySelector(".first-screen")
-var mapCont = document.querySelector(".map-holder")
- var sidebar = document.querySelector(".sidebar")
+var mapCont = document.querySelector(".map")
+var sidebar = document.querySelector(".sidebar")
 var form = document.querySelector("#search-form")
 var secondScreen = document.querySelector(".second-screen")
+var titleEl = document.querySelector("#title")
 
 
 
@@ -30,6 +31,13 @@ form.addEventListener("submit", function(event) {
     firstScreen.style.display = "none";
     mapCont.style.display="block";
 	sidebar.style.display="block";
-
-
 });
+
+titleEl.addEventListener("click", function(event) {
+    event.preventDefault();
+	firstScreen.style.display="block"
+    mapCont.style.display = "none";
+	sidebar.style.display="none";
+});
+
+

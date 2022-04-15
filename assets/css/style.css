@@ -6,6 +6,7 @@ body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     border-width: 1px;
     border-radius: 10px;
+    background-color: #9FC088;
     padding: 30px;
     color: white;
     text-align: center;
@@ -37,7 +38,6 @@ input {
     margin: auto;
 }
 
-<<<<<<< HEAD
 footer {
     border: #525E75 5px solid;
 
@@ -54,8 +54,8 @@ a {
 
 a:hover {
     color: #525E75;
-=======
+}
+
 nav {
     background-color: #9FC088;
->>>>>>> c33e8c3c322be3922adf294db5f58a365deced79
 }

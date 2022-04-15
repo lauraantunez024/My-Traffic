@@ -11,14 +11,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="stylesheet" href="./assets/css/style.css" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+
+<header>
   <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo"> <span class="material-icons">
+    <div class="nav-wrapper green lighten-1">
+      <a href="#" class="brand-logo" id="title"> <span class="material-icons">
         traffic
         </span> <i class="material-icons"></i> My Traffic</a>
     </div>
   </nav>
-</head>
+</header>
 
 <body>
 <!-- style="display:none" -->
@@ -31,7 +35,7 @@
 </div>
 
 <div class = "second-screen container">
-    <!-- navbar code goes here with div class = card -->
+    
     <div class="row">
 <div class = "map-holder card col s3"> 
     <div class=""></div>
@@ -56,7 +60,7 @@
   <div class = "second-screen container">
     <!-- navbar code goes here with div class = card -->
     <div class="row">
-      <div class = "sidebar card col s3 green lighten-1"> 
+      <div class = "sidebar card col s3"> 
         <div class=""></div>
         <h4>search results</h4>
         <input type="text" placeholder=" Search...." name="search"> 
@@ -65,7 +69,7 @@
           <p> address, bedroom, bath, list price?</p>
         </div>
       </div>
-      <div class = "map card col s8 offset-s1 green lighten-1"> 
+      <div class = "map card col s8 offset-s1"> 
         <div class=""></div>
         <button class="btn btn-info btn-block">See traffic data</button>
           <h3 id="traffic-map">This is where the map will go.</h3>
