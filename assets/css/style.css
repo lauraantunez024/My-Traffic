@@ -23,6 +23,10 @@ body {
     margin-top: 10px;
 }
 
+#traffic-map {
+    height: 100%;
+  }
+  
 ::placeholder {
     color: white; 
     margin: auto;
