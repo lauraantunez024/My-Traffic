@@ -14,7 +14,7 @@ const format = "json"
 const versionNumberOne = 2;
 
 
-// let trafficData = fetch(`${TomBUrl}traffic/services/${versionNumber}/flowSegmentData/${style}/${zoom}/${format}?key=${TApiKey}&point=${point}`)
+
 
 
 
