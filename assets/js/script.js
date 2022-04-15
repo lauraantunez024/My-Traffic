@@ -1,7 +1,7 @@
 /// Laura's JS
 var firstScreen = document.querySelector(".first-screen")
 var mapCont = document.querySelector(".map-holder")
-var sidebar = documemnt.querySelector(".sidebar")
+ var sidebar = document.querySelector(".sidebar")
 var form = document.querySelector("#search-form")
 var secondScreen = document.querySelector(".second-screen")
 

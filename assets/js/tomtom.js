@@ -6,24 +6,43 @@ var searchFormInput = document.querySelector("#search-input");
 const TomBUrl = "https://api.tomtom.com/";
 const TApiKey = "I28sS2O89AHgGz3gUm9lZBAXNk2HwB0N";
 const versionNumber = 4;
-const style = "relative0";
-const zoom = 12;
-const format = "png";
 const thickness = "absolute";
-const tileSize = 256;
-var x = 2044;
-var y = 1360;
-let trafficData = fetch(`${TomBUrl}traffic/map/${versionNumber}/tile/flow/${style}/${zoom}/${x}/${y}.${format}?key=${TApiKey}`)
+const ext = "json";
+const style = "relative";
+const zoom = 12;
+const format = "json"
+const versionNumberOne = 2;
 
+
+// let trafficData = fetch(`${TomBUrl}traffic/services/${versionNumber}/flowSegmentData/${style}/${zoom}/${format}?key=${TApiKey}&point=${point}`)
+
+
+
+
+function getStreetAddress(street) {
+var url = `${TomBUrl}search/${versionNumberOne}/geocode/${street}.${ext}?key=${TApiKey}`;
+
+fetch(url)
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        console.log(data);
+        var streetObject = data.results[0];
+        
+        var lat = streetObject.position.lat;
+        var lon = streetObject.position.lon;
+        console.log(lat, lon)
+        var currentTrafficUrl = `${TomBUrl}traffic/services/4/flowSegmentData/${style}/${zoom}/${format}?key=${TApiKey}`;
+    });
+}
 
 function handleFormSubmit(evt) {
     evt.preventDefault();
-        window.alert("foo");
-  }
-  
-  function handleButtonClick(evt) {
-    
-  }
+    var street = searchFormInput.value;
+    getStreetAddress(street);
+}
+
 
 function addEventListeners() {
     searchFormEl.addEventListener("submit", handleFormSubmit);
@@ -31,8 +50,7 @@ function addEventListeners() {
 }
 
 function init() {
-    addEventListeners(); 
-    // populateButtons();
-  }
+    addEventListeners();
+}
 
 init();
