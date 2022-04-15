@@ -30,10 +30,11 @@ fetch(url)
         console.log(data);
         var streetObject = data.results[0];
         
-        var lat = streetObject.position.lat;
+        var lat = streetObject.position.lat; 
         var lon = streetObject.position.lon;
-        console.log(lat, lon)
-        var currentTrafficUrl = `${TomBUrl}traffic/services/4/flowSegmentData/${style}/${zoom}/${format}?key=${TApiKey}`;
+        var point = lat + ", " + lon;
+        console.log(point);
+        var currentTrafficUrl = `${TomBUrl}traffic/services/${format}/flowSegmentData/${style}/${zoom}/${format}?key=${TApiKey}&point=${point}`;
     });
 }
 
