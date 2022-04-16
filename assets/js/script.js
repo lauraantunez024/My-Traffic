@@ -18,10 +18,10 @@ const options = {
 	}
 };
 // This API shows properties that are listed for sale in Atlanta Georgia. We can only do one city and state at a time so we should talk about which one. 
-let realtyData = fetch('https://realty-in-us.p.rapidapi.com/properties/list-for-sale?state_code=NY&city=New%20York%20City&offset=0&limit=200&sort=relevance', options)
-	.then(response => response.json())
-	.then(response => console.log(response))
-	.catch(err => console.error(err));
+// let realtyData = fetch('https://realty-in-us.p.rapidapi.com/properties/list-for-sale?state_code=NY&city=New%20York%20City&offset=0&limit=200&sort=relevance', options)
+// 	.then(response => response.json())
+// 	.then(response => console.log(response))
+// 	.catch(err => console.error(err));
 
 
 //abstraction and modularization
@@ -41,3 +41,38 @@ titleEl.addEventListener("click", function(event) {
 });
 
 
+function getListingData(listing) {
+	let realtyData = fetch('https://realty-in-us.p.rapidapi.com/properties/list-for-sale?state_code=NY&city=New%20York%20City&offset=0&limit=5&sort=relevance', options)
+	.then(function(response) {
+		return response.json();
+	})
+	.then(function(listD) {
+		console.log(listD)
+	})
+	.catch (function (err) {
+		console.error(err)
+	})
+
+
+}
+
+
+
+
+function handleFormSubmit(evt) {
+    evt.preventDefault();
+    var listing = searchFormInput.value;
+    getListingData(listing);
+}
+
+
+function addEventListeners() {
+    form.addEventListener("submit", handleFormSubmit);
+    // buttonContainerEl.addEventListener("click", handleButtonClick);
+}
+
+function init() {
+    addEventListeners();
+}
+
+init();

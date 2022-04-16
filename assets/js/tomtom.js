@@ -36,6 +36,7 @@ function mapData(trafData, lat, lon) {
 
 
 
+
 //3636 Habersham Rd NW, Atlanta, GA 30305
 
 function getStreetAddress(street) {
