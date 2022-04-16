@@ -12,30 +12,58 @@ const style = "relative";
 const zoom = 12;
 const format = "json"
 const versionNumberOne = 2;
+const countrySet = "US/USA"
+const radius = 40233.60;
+
+
+function mapData(trafData, lat, lon) {
+    console.log(JSON.stringify(trafData) + "this one")
+
+    tt.setProductInfo('<your-product-id>', '<your-product-version>')
+    tt.map({
+        key: TApiKey,
+        container: 'map',
+        center: { lat: lat, lng: lon },
+        zoom: 12,
+        pitch: 50,
+        stylesVisibility: {
+            trafficIncidents: true,
+            trafficFlow: true
+        }
+    })
+
+}
 
 
 
-
-
-
+//3636 Habersham Rd NW, Atlanta, GA 30305
 
 function getStreetAddress(street) {
-var url = `${TomBUrl}search/${versionNumberOne}/geocode/${street}.${ext}?key=${TApiKey}`;
+    var url = `${TomBUrl}search/${versionNumberOne}/geocode/${street}.${ext}?key=${TApiKey}&countrySet=${countrySet}&radius=${radius}`;
 
-fetch(url)
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (data) {
-        console.log(data);
-        var streetObject = data.results[0];
-        
-        var lat = streetObject.position.lat; 
-        var lon = streetObject.position.lon;
-        var point = lat + ", " + lon;
-        console.log(point);
-        var currentTrafficUrl = `${TomBUrl}traffic/services/${format}/flowSegmentData/${style}/${zoom}/${format}?key=${TApiKey}&point=${point}`;
-    });
+    fetch(url)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            var streetObject = data.results[0];
+
+            var lat = streetObject.position.lat;
+            var lon = streetObject.position.lon;
+            var point = lat + "," + lon;
+            console.log(point);
+            var currentTrafficUrl = `${TomBUrl}traffic/services/${versionNumber}/flowSegmentData/${style}/${zoom}/${format}?key=${TApiKey}&point=${point}`;
+
+            fetch(currentTrafficUrl)
+                .then(function (response) {
+                    return response.json()
+                }).then(function (trafData) {
+                    mapData(trafData, lat, lon);
+                })
+
+        });
+
 }
 
 function handleFormSubmit(evt) {
@@ -52,6 +80,7 @@ function addEventListeners() {
 
 function init() {
     addEventListeners();
+    mapData();
 }
 
 init();

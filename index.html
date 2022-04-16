@@ -5,12 +5,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Real Estate Traffic Data</title>
+  <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.18.0/maps/maps.css' />
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400&family=Merriweather:wght@700&display=swap"
     rel="stylesheet" />
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="stylesheet" href="./assets/css/style.css" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 
 </head>
 
@@ -18,15 +20,15 @@
   <nav>
     <div class="nav-wrapper green lighten-1">
       <a href="#" class="brand-logo" id="title"> <span class="material-icons">
-        traffic
+          traffic
         </span> <i class="material-icons"></i> My Traffic</a>
     </div>
   </nav>
 </header>
 
 <body>
-<!-- style="display:none" -->
-<!-- <div class = "first-screen card" >
+  <!-- style="display:none" -->
+  <!-- <div class = "first-screen card" >
       <h1 class="text-primary">Find Real Estate Traffic Data</h1>
       <form id="search-form" class="form w-100">
         <input id="search-input" class="form-input w-100" type="text" placeholder="City or Zipcode">
@@ -47,64 +49,73 @@
 
 </div> -->
 
-<main>
+  <main>
 
-  <div class = "first-screen card" style="display:none">
-    <h1 class="text-primary">Find Real Estate Traffic Data</h1>
-    <form id="search-form" class="form w-100">
-      <input id="search-input" class="form-input w-100" type="text" placeholder="City or Zipcode">
-      <button class="btn btn-info btn-block">Submit</button>
-    </form>
-  </div>
-  
-  <div class = "second-screen container">
-    <!-- navbar code goes here with div class = card -->
-    <div class="row">
-      <div class = "sidebar card col s3"> 
-        <div class=""></div>
-        <h4>search results</h4>
-        <input type="text" placeholder=" Search...." name="search"> 
-        <div id="api-info">
-          <br>
-          <p> address, bedroom, bath, list price?</p>
+    <div class="first-screen card" style="display:none">
+      <h1 class="text-primary">Find Real Estate Traffic Data</h1>
+      <form id="search-form" class="form w-100">
+        <input id="search-input" class="form-input w-100" type="text" placeholder="City or Zipcode">
+        <button class="btn btn-info btn-block">Submit</button>
+      </form>
+    </div>
+
+    <div class="second-screen container">
+      <!-- navbar code goes here with div class = card -->
+      <div class="row">
+        <div class="sidebar card col s3">
+          <div class=""></div>
+          <h4>search results</h4>
+          <input type="text" placeholder=" Search...." name="search">
+          <div id="api-info">
+            <br>
+            <p> address, bedroom, bath, list price?</p>
+          </div>
+        </div>
+        <div class="map card col s8 offset-s1">
+          <div class=""></div>
+          <button class="btn btn-info btn-block">See traffic data</button>
+          <h3 id="map" style="width: 100%; height: 80%;" class="map "></h3>
+
+        </div>
+
+  </main>
+
+  <footer class="page-footer green lighten-1">
+    <div class="container">
+
+
+      <div class="row">
+        <div class="col 16 s12" id="author-section">
+          <h5 class="white-text">Authors and their Github Links</h5>
+
+          <a class="text-lighten-3" href="https://github.com/lauraantunez024" target="_blank">Laura Antunez</a>
+          <a class="text-lighten-3" href="https://github.com/MRBorders" target="_blank">Matthew Borders</a>
+          <a class="text-lighten-3" href="https://github.com/FMartinez59" target="_blank">Fernando Martinez Jr.</a>
+          <a class="text-lighten-3" href="https://github.com/Jacksonwillis22" target="_blank">Jackson Willis</a>
+
         </div>
       </div>
-      <div class = "map card col s8 offset-s1"> 
-        <div class=""></div>
-        <button class="btn btn-info btn-block">See traffic data</button>
-          <h3 id="traffic-map">This is where the map will go.</h3>
-
-        
-        
-      </div>
-      
-</main>
- 
-<footer class="page-footer green lighten-1">
-  <div class="container">
-  
-
-    <div class="row">
-      <div class="col 16 s12" id = "author-section">
-        <h5 class="white-text">Authors and their Github Links</h5>
-      
-         <a class = "text-lighten-3" href="https://github.com/lauraantunez024" target="_blank">Laura Antunez</a>
-         <a class = "text-lighten-3" href="https://github.com/MRBorders" target="_blank">Matthew Borders</a>
-         <a class = "text-lighten-3" href="https://github.com/FMartinez59" target="_blank">Fernando Martinez</a>
-         <a class = "text-lighten-3" href="https://github.com/Jacksonwillis22" target="_blank">Jackson Willis</a>
-        
-      </div>
     </div>
+  </footer>
   </div>
-</footer>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.18.0/maps/maps-web.min.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="./assets/js/script.js"></script>
   <script src="./assets/js/tomtom.js"></script>
 
-    
+  <!-- <script>
+    //map cdn from tom tom read it espcially tt
+    // Set product's id and version
+    tt.setProductInfo('<product-name>', '<version-number>');
 
+    //...
 
+    // Initialize the TomTom map in the element with an id set to 'map'
+    tt.map({
+      key: 'I28sS2O89AHgGz3gUm9lZBAXNk2HwB0N',
+      container: 'map'
+    });
+  </script> -->
 </body>
 
 </html>
