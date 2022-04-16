@@ -16,8 +16,22 @@ const countrySet = "US/USA"
 const radius = 40233.60;
 
 
-function mapData(data) {
-    console.log(data);
+function mapData(trafData, lat, lon) {
+    console.log(JSON.stringify(trafData) + "this one")
+
+    tt.setProductInfo('<your-product-id>', '<your-product-version>')
+    tt.map({
+        key: TApiKey,
+        container: 'map',
+        center: { lat: lat, lng: lon },
+        zoom: 12,
+        pitch: 50,
+        stylesVisibility: {
+            trafficIncidents: true,
+            trafficFlow: true
+        }
+    })
+
 }
 
 
@@ -44,8 +58,8 @@ function getStreetAddress(street) {
             fetch(currentTrafficUrl)
                 .then(function (response) {
                     return response.json()
-                }).then(function (data) {
-                    mapData(data);
+                }).then(function (trafData) {
+                    mapData(trafData, lat, lon);
                 })
 
         });
@@ -66,6 +80,7 @@ function addEventListeners() {
 
 function init() {
     addEventListeners();
+    mapData();
 }
 
 init();
