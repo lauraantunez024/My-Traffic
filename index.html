@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Real Estate Traffic Data</title>
-  <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/<version>/maps/maps.css'/>
+  <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.18.0/maps/maps.css'/>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400&family=Merriweather:wght@700&display=swap"
     rel="stylesheet" />
     <!-- Compiled and minified CSS -->
@@ -74,11 +74,8 @@
       <div class = "map card col s8 offset-s1"> 
         <div class=""></div>
         <button class="btn btn-info btn-block">See traffic data</button>
-          <h3 id="traffic-map">This is where the map will go.</h3>
-          <div id="map" class="map"></div>
-
-        
-        
+          <h3 id="map" style="width: 100%; height: 100%;" class="map "></h3>
+          
       </div>
       
 </main>
@@ -101,7 +98,7 @@
   </div>
 </footer>
 </div>
-<script src='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/<version>/maps/maps-web.min.js'></script>
+<script src='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.18.0/maps/maps-web.min.js'></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="./assets/js/script.js"></script>
   <script src="./assets/js/tomtom.js"></script>
@@ -109,7 +106,7 @@
     <script>
       //map cdn from tom tom read it espcially tt
 // Set product's id and version
-tt.setProductInfo('Willow', 'version:11524');
+tt.setProductInfo('<product-name>', '<version-number>');
 
 //...
 
