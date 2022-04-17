@@ -34,7 +34,7 @@ function mapData(trafData, lat, lon) {
 
 }
 
-
+var point;
 
 //3636 Habersham Rd NW, Atlanta, GA 30305
 
@@ -51,8 +51,8 @@ function getStreetAddress(street) {
 
             var lat = streetObject.position.lat;
             var lon = streetObject.position.lon;
-            var point = lat + "," + lon;
-            console.log(point);
+            point = lat + "," + lon;
+            // console.log(point);
             var currentTrafficUrl = `${TomBUrl}traffic/services/${versionNumber}/flowSegmentData/${style}/${zoom}/${format}?key=${TApiKey}&point=${point}`;
 
             fetch(currentTrafficUrl)
@@ -65,7 +65,7 @@ function getStreetAddress(street) {
         });
 
 }
-
+console.log(point)
 function handleFormSubmit(evt) {
     evt.preventDefault();
     var street = searchFormInput.value;

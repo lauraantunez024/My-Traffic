@@ -19,9 +19,20 @@ const options = {
 };
 // This API shows properties that are listed for sale in Atlanta Georgia. We can only do one city and state at a time so we should talk about which one. 
 let realtyData = fetch('https://realty-in-us.p.rapidapi.com/properties/list-for-sale?state_code=NY&city=New%20York%20City&offset=0&limit=200&sort=relevance', options)
-	.then(response => response.json())
-	.then(response => console.log(response))
-	.catch(err => console.error(err));
+	.then(function(response) {
+		return response.json();
+	})
+	.then(function(response) {
+		console.log(response)
+	})
+	.catch (function (err) {
+		console.error(err)
+	})
+		
+		
+	// 	response => response.json())
+	// .then(response => console.log(response))
+	// .catch(err => console.error(err));
 
 
 //abstraction and modularization
@@ -41,3 +52,27 @@ titleEl.addEventListener("click", function(event) {
 });
 
 
+// var map = new Map({
+// 	view: new View({
+// 	  center: [0, 0],
+// 	  zoom: 1
+// 	}),
+// 	layers: [
+// 	  new TileLayer({
+// 		source: new OSM()
+// 	  })
+// 	],
+// 	target: 'map'
+//   });
+var map = new ol.Map({
+	target: 'map',
+	layers: [
+	  new ol.layer.Tile({
+		source: new ol.source.OSM()
+	  })
+	],
+	view: new ol.View({
+	  center: ol.proj.fromLonLat([37.41, 8.82]),
+	  zoom: 4
+	})
+  });
