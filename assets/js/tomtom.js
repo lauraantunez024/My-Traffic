@@ -22,7 +22,7 @@ function mapData(trafData, lat, lon) {
     tt.setProductInfo('<your-product-id>', '<your-product-version>')
     tt.map({
         key: TApiKey,
-        container: 'map',
+        container: 'map1',
         center: { lat: lat, lng: lon },
         zoom: 12,
         pitch: 50,

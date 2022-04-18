@@ -23,6 +23,10 @@ body {
     margin: auto;
     margin-top: 10px;
 }
+#map2 {
+     height: 180px; 
+    }
+
 
 #traffic-map {
     height: 100%;
