@@ -41,8 +41,18 @@
     <div class="first-screen card" >
       <h1 class="text-primary">Find Real Estate Traffic Data</h1>
       <form id="search-form" class="form w-100">
-        <input id="search-input" class="form-input w-100" type="text" placeholder="City or Zipcode">
+        <input id="search-input" class="form-input w-100" type="text" autocomplete="off" placeholder="City or Zipcode">
         <button class="btn btn-info btn-block">Submit</button>
+        <div style="text-align: left;">
+          recent searches
+          <ol id="recentSearches">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ol>
+        </div>
       </form>
     </div>
 
