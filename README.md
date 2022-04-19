@@ -6,24 +6,29 @@ Our mission with this application is to show potential homeowners the traffic ar
 
 ## How?
  
- The "How?" is very easy you just simply put in your city or zipcode and our application will show you a traffic map with the area listings to the side so you can see how brutal your commute might be!
+A user puts an Atlanta, GA area, for example, Decatur, GA, and they will first be presented with a live traffic map of that area. When they click "see realty data" they will see a leaflet map populated with a listing in that area. 
+This are for people who are considering moving to Atlanta and want to know what the traffic is like in certain areas, as well as examples of listing of houses for sale in that area.
+
+The code works by using both a TomTom API and a realty in us Api. The TomTom API takes the user input and shows that area, the realty api populates a leaflet map with a listing, as well as some information about the listing.
 
 ## Technologies used
 
 Materialize: https://materializecss.com/
-
+Leaflet JS https://leafletjs.com/
+Realty API https://apidojo.github.io/#realtor-api
 Tomtom API: https://developer.tomtom.com/blog/build-different/using-traffic-data-maps-and-routes
 
 ## Screenshot
 
-!['info about picture'](./assets/screenshots/screenshot1.png)
+!['info about picture'](./assets/screenshots/screenshot2.png)
 
-!['info'](./assets/screenshots/acreenshot-2.png)
+!['info'](./assets/screenshots/acreenshot1.png)
 
 
 ## Check it out!
 
-link: file:///Users/jacksonwillis/Documents/01-Github-Projects_/My-Traffic/index.html
+link: https://lauraantunez024.github.io/My-Traffic/
+
 
 
 ## Contributers
