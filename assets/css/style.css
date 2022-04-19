@@ -2,6 +2,10 @@ body {
     background-color: #F1DDBF;
 }
 
+.my-leaflet-map-container img {
+    max-height: none;
+}
+
 .card {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     border-width: 1px;
@@ -23,6 +27,11 @@ body {
     margin: auto;
     margin-top: 10px;
 }
+#map2 {
+    width: 100%;
+    height: 80%;     
+}
+
 
 #traffic-map {
     height: 100%;
@@ -59,3 +68,5 @@ a:hover {
 nav {
     background-color: #9FC088;
 }
+
+

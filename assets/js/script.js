@@ -5,11 +5,18 @@ var sidebar = document.querySelector(".sidebar")
 var form = document.querySelector("#search-form")
 var secondScreen = document.querySelector(".second-screen")
 var titleEl = document.querySelector("#title")
+var mapSwitchRealty = document.querySelector("#ms-realty")
+var mapSwitchTraffic = document.querySelector("#ms-traffic")
+var trafficMap = document.querySelector("#map1")
+var realtyMap = document.querySelector("#map2")
+var searchFormInput = document.querySelector("#search-input");
 
 
 
-//realty parameters
-const RltBUrl = "https://realty-in-us.p.rapidapi.com/";
+
+
+
+// This API shows properties that are listed for sale in Atlanta Georgia. We can only do one city and state at a time so we should talk about which one. 
 const options = {
 	method: 'GET',
 	headers: {
@@ -17,12 +24,11 @@ const options = {
 		'X-RapidAPI-Key': '395cc9c100mshac427d1df6a23e9p130807jsn016fa6b52c1c'
 	}
 };
-// This API shows properties that are listed for sale in Atlanta Georgia. We can only do one city and state at a time so we should talk about which one. 
-let realtyData = fetch('https://realty-in-us.p.rapidapi.com/properties/list-for-sale?state_code=NY&city=New%20York%20City&offset=0&limit=200&sort=relevance', options)
-	.then(response => response.json())
-	.then(response => console.log(response))
-	.catch(err => console.error(err));
 
+// fetch('https://realty-in-us.p.rapidapi.com/properties/v2/list-for-sale?city=Atlanta&state_code=GA&offset=0&limit=200&sort=relevance', options)
+// 	.then(response => response.json())
+// 	.then(response => console.log(response))
+// 	.catch(err => console.error(err));
 
 //abstraction and modularization
 
@@ -39,5 +45,112 @@ titleEl.addEventListener("click", function(event) {
     mapCont.style.display = "none";
 	sidebar.style.display="none";
 });
+
+mapSwitchRealty.addEventListener("click", function() {
+	trafficMap.style.display="none";
+	realtyMap.style.display="block";
+	mapSwitchRealty.style.display="none";
+	mapSwitchTraffic.style.display="block";
+	
+
+})
+mapSwitchTraffic.addEventListener("click", function() {
+	trafficMap.style.display="block";
+	realtyMap.style.display="none";
+	mapSwitchRealty.style.display="block";
+	mapSwitchTraffic.style.display="none";
+	
+
+})
+
+// const mymap = L.map('map2').setView([0, 0], 6);
+var accessToken = "pk.eyJ1IjoibGF1cmFhbnR1bmV6MDI0IiwiYSI6ImNsMjN0dmQ1bzF0a2szYnA2ZGJpNDJvd3YifQ.hLWsrVySzzKYd4I1ISkVMA"
+
+var map = L.map('map2', {
+    center: [33.74, -84.39],
+    zoom: 13
+});
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoibGF1cmFhbnR1bmV6MDI0IiwiYSI6ImNsMjN0dmQ1bzF0a2szYnA2ZGJpNDJvd3YifQ.hLWsrVySzzKYd4I1ISkVMA'
+}).addTo(map);
+
+var popup = L.popup()
+    .setLatLng([51.513, -0.09])
+    .openOn(map);
+
+const api_url = 'https://realty-in-us.p.rapidapi.com/properties/v2/list-for-sale?city=Atlanta&state_code=GA&offset=0&limit=200&sort=relevance&radius=10';
+
+let firstTime = true;
+
+var addy = document.querySelector("#addy")
+
+i=0;
+async function getAddress() {
+  const response = await fetch(api_url, options);
+  
+  const data = await response.json();
+  console.log(data)
+  do  {
+  var prop = data.properties[i];
+  i++;
+
+  console.log(prop)
+  var address = prop.address
+//   var lat = address.lat
+//   var lon = address.lon 
+  var bed = prop.beds
+  var bath = prop.baths
+  var price = prop.price
+  var street = address.line
+  var area = address.neighborhood_name
+
+  document.getElementById('county').textContent = area;
+  document.getElementById('price').textContent = price;
+  document.getElementById('bed').textContent = bed;
+  document.getElementById('bath').textContent = bath;
+  
+
+
+var lat = window.localStorage.getItem("lat");
+var lon = window.localStorage.getItem("lon");
+map.panTo(new L.LatLng(lat, lon));
+popup.setLatLng([lat, lon]);
+popup.setContent(street)
+} while (lat == prop.address.lat && lon == prop.address.lon)
+
+
+
+// marker.setLatLng([lat, lon]);
+
+
+
+}
+
+getAddress();
+
+
+function handleFormSubmit(evt) {
+    evt.preventDefault();
+    var address = searchFormInput.value;
+	
+    
+    getStreetAddress(street);
+}
+
+
+
+function addEventListeners() {
+    searchFormEl.addEventListener("submit", handleFormSubmit);
+    // buttonContainerEl.addEventListener("click", handleButtonClick);
+}
+
+
+addEventListeners();
+
 
 

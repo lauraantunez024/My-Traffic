@@ -16,13 +16,14 @@ const countrySet = "US/USA"
 const radius = 40233.60;
 
 
+
 function mapData(trafData, lat, lon) {
     console.log(JSON.stringify(trafData) + "this one")
 
     tt.setProductInfo('<your-product-id>', '<your-product-version>')
     tt.map({
         key: TApiKey,
-        container: 'map',
+        container: 'map1',
         center: { lat: lat, lng: lon },
         zoom: 12,
         pitch: 50,
@@ -51,8 +52,17 @@ function getStreetAddress(street) {
 
             var lat = streetObject.position.lat;
             var lon = streetObject.position.lon;
+            window.localStorage.setItem("lon", lon);
+            window.localStorage.setItem("lat", lat);
+
+
+            
+         
             var point = lat + "," + lon;
-            console.log(point);
+            document.getElementById('lat').innerHTML = lat;
+            document.getElementById('lon').innerHTML = lon;
+
+            // console.log(point);
             var currentTrafficUrl = `${TomBUrl}traffic/services/${versionNumber}/flowSegmentData/${style}/${zoom}/${format}?key=${TApiKey}&point=${point}`;
 
             fetch(currentTrafficUrl)
@@ -66,9 +76,14 @@ function getStreetAddress(street) {
 
 }
 
+
+
+
 function handleFormSubmit(evt) {
     evt.preventDefault();
     var street = searchFormInput.value;
+    document.getElementById('userinput').textContent = street
+    
     getStreetAddress(street);
 }
 
@@ -84,3 +99,10 @@ function init() {
 }
 
 init();
+
+
+
+
+
+
+
