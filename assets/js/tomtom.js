@@ -16,6 +16,7 @@ const countrySet = "US/USA"
 const radius = 40233.60;
 
 
+
 function mapData(trafData, lat, lon) {
     console.log(JSON.stringify(trafData) + "this one")
 
@@ -34,9 +35,6 @@ function mapData(trafData, lat, lon) {
 
 }
 
-var point;
-var lat;
-var lon;
 
 
 //3636 Habersham Rd NW, Atlanta, GA 30305
@@ -52,9 +50,18 @@ function getStreetAddress(street) {
             console.log(data);
             var streetObject = data.results[0];
 
-            lat = streetObject.position.lat;
-            lon = streetObject.position.lon;
-            point = lat + "," + lon;
+            var lat = streetObject.position.lat;
+            var lon = streetObject.position.lon;
+            window.localStorage.setItem("lon", lon);
+            window.localStorage.setItem("lat", lat);
+
+
+            
+         
+            var point = lat + "," + lon;
+            document.getElementById('lat').innerHTML = lat;
+            document.getElementById('lon').innerHTML = lon;
+
             // console.log(point);
             var currentTrafficUrl = `${TomBUrl}traffic/services/${versionNumber}/flowSegmentData/${style}/${zoom}/${format}?key=${TApiKey}&point=${point}`;
 
@@ -92,4 +99,10 @@ function init() {
 }
 
 init();
+
+
+
+
+
+
 

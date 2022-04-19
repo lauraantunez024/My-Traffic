@@ -15,6 +15,8 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
   crossorigin=""/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
 
 
 
@@ -32,27 +34,7 @@
 </header>
 
 <body>
-  <!-- style="display:none" -->
-  <!-- <div class = "first-screen card" >
-      <h1 class="text-primary">Find Real Estate Traffic Data</h1>
-      <form id="search-form" class="form w-100">
-        <input id="search-input" class="form-input w-100" type="text" placeholder="City or Zipcode">
-        <button class="btn btn-info btn-block">Submit</button>
-      </form>
-</div>
 
-<div class = "second-screen container">
-    
-    <div class="row">
-<div class = "map-holder card col s3"> 
-    <div class=""></div>
-    <h3>This is where the sidebar will go.</h3>
-</div>
-<div class = "sidebar card col s9"> 
-  <div class=""></div>
-  <button id="toggle-traffic-button" class="btn btn-info btn-block">See traffic data</button>
-
-</div> -->
 
   <main>
 
@@ -77,6 +59,8 @@
           <div id="api-info">
             <br>
             <p>
+              latitude: <span id="lat"></span>°<br />
+              longitude: <span id="lon"></span>° <br />
               Neighborhood: <span id="county"></span> <br />
               Price: <span id="price"></span> <br />
               Bedrooms: <span id="bed"></span> <br />
@@ -122,24 +106,14 @@
   </div>
   <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.18.0/maps/maps-web.min.js'></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="./assets/js/tomtom.js"></script>
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
   crossorigin=""></script>
   <script src="./assets/js/script.js"></script>
-  <script src="./assets/js/tomtom.js"></script>
 
-  <!-- <script>
-    //map cdn from tom tom read it espcially tt
-    // Set product's id and version
-    tt.setProductInfo('<product-name>', '<version-number>');
 
-    //...
 
-    // Initialize the TomTom map in the element with an id set to 'map'
-    tt.map({
-      key: 'I28sS2O89AHgGz3gUm9lZBAXNk2HwB0N',
-      container: 'map'
-    });
   </script> -->
 </body>
 

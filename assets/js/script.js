@@ -14,6 +14,8 @@ var searchFormInput = document.querySelector("#search-input");
 
 
 
+
+
 // This API shows properties that are listed for sale in Atlanta Georgia. We can only do one city and state at a time so we should talk about which one. 
 const options = {
 	method: 'GET',
@@ -85,47 +87,70 @@ const api_url = 'https://realty-in-us.p.rapidapi.com/properties/v2/list-for-sale
 
 let firstTime = true;
 
+var addy = document.querySelector("#addy")
+
+i=0;
 async function getAddress() {
   const response = await fetch(api_url, options);
   
   const data = await response.json();
   console.log(data)
-  var prop = data.properties[0]
+  do  {
+  var prop = data.properties[i];
+  i++;
+
   console.log(prop)
   var address = prop.address
-  var lat = address.lat
-  var lon = address.lon 
+//   var lat = address.lat
+//   var lon = address.lon 
   var bed = prop.beds
   var bath = prop.baths
   var price = prop.price
   var street = address.line
   var area = address.neighborhood_name
 
-
-//   Always set the view to current lat lon and zoom!
-map.panTo(new L.LatLng(lat, lon));
-popup.setLatLng([lat, lon]);
-popup.setContent(street)
-
-
-marker.setLatLng([lat, lon]);
-
-
   document.getElementById('county').textContent = area;
   document.getElementById('price').textContent = price;
   document.getElementById('bed').textContent = bed;
   document.getElementById('bath').textContent = bath;
+  
+
+
+var lat = window.localStorage.getItem("lat");
+var lon = window.localStorage.getItem("lon");
+map.panTo(new L.LatLng(lat, lon));
+popup.setLatLng([lat, lon]);
+popup.setContent(street)
+} while (lat == prop.address.lat && lon == prop.address.lon)
+
+
+
+// marker.setLatLng([lat, lon]);
+
+
+
 }
 
 getAddress();
 
 
+function handleFormSubmit(evt) {
+    evt.preventDefault();
+    var address = searchFormInput.value;
+	
+    
+    getStreetAddress(street);
+}
 
-// map.panTo(new L.LatLng(lat, lon));
 
-// function handleFormSubmit(evt) {
-//     evt.preventDefault();
-//     var address = searchFormInput.value;
-//     getStreetAddress(address);
-// }
+
+function addEventListeners() {
+    searchFormEl.addEventListener("submit", handleFormSubmit);
+    // buttonContainerEl.addEventListener("click", handleButtonClick);
+}
+
+
+addEventListeners();
+
+
 
