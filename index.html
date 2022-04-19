@@ -69,11 +69,20 @@
       <div class="row">
         <div class="sidebar card col s3">
           <div class=""></div>
-          <h4>search results</h4>
+          <h4>search results for:</h4> <br>
+          <span id="userinput"></span>
+
+
           <input id="search-form" type="text" placeholder=" Search...." name="search">
           <div id="api-info">
             <br>
-            <p> address, bedroom, bath, list price?</p>
+            <p>
+              Neighborhood: <span id="county"></span> <br />
+              Price: <span id="price"></span> <br />
+              Bedrooms: <span id="bed"></span> <br />
+              Bathrooms: <span id="bath"></span> <br />
+            </p>
+           
           </div>
         </div>
         <div class="map card col s8 offset-s1">
@@ -84,7 +93,8 @@
           <h3 id="map1" style="width: 100%; height: 80%;"  class="map1"></h3>
 
          
-            <div id="map2" style="width: 100%; height: 80%; display:none"></div>
+            <div id="map2" style="display:none"></div>
+           
 
 
 

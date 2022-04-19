@@ -9,10 +9,12 @@ var mapSwitchRealty = document.querySelector("#ms-realty")
 var mapSwitchTraffic = document.querySelector("#ms-traffic")
 var trafficMap = document.querySelector("#map1")
 var realtyMap = document.querySelector("#map2")
+var searchFormInput = document.querySelector("#search-input");
 
 
-//realty parameters
-const RltBUrl = "https://realty-in-us.p.rapidapi.com/";
+
+
+// This API shows properties that are listed for sale in Atlanta Georgia. We can only do one city and state at a time so we should talk about which one. 
 const options = {
 	method: 'GET',
 	headers: {
@@ -20,23 +22,11 @@ const options = {
 		'X-RapidAPI-Key': '395cc9c100mshac427d1df6a23e9p130807jsn016fa6b52c1c'
 	}
 };
-// This API shows properties that are listed for sale in Atlanta Georgia. We can only do one city and state at a time so we should talk about which one. 
-// let realtyData = fetch('https://realty-in-us.p.rapidapi.com/properties/list-for-sale?state_code=NY&city=New%20York%20City&offset=0&limit=200&sort=relevance', options)
-// 	.then(function(response) {
-// 		return response.json();
-// 	})
-// 	.then(function(response) {
-// 		console.log(response)
-// 	})
-// 	.catch (function (err) {
-// 		console.error(err)
-// 	})
-		
-		
-// 	// 	response => response.json())
-// 	// .then(response => console.log(response))
-// 	// .catch(err => console.error(err));
 
+// fetch('https://realty-in-us.p.rapidapi.com/properties/v2/list-for-sale?city=Atlanta&state_code=GA&offset=0&limit=200&sort=relevance', options)
+// 	.then(response => response.json())
+// 	.then(response => console.log(response))
+// 	.catch(err => console.error(err));
 
 //abstraction and modularization
 
@@ -71,7 +61,7 @@ mapSwitchTraffic.addEventListener("click", function() {
 
 })
 
-
+// const mymap = L.map('map2').setView([0, 0], 6);
 var accessToken = "pk.eyJ1IjoibGF1cmFhbnR1bmV6MDI0IiwiYSI6ImNsMjN0dmQ1bzF0a2szYnA2ZGJpNDJvd3YifQ.hLWsrVySzzKYd4I1ISkVMA"
 
 var map = L.map('map2', {
@@ -87,15 +77,55 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     accessToken: 'pk.eyJ1IjoibGF1cmFhbnR1bmV6MDI0IiwiYSI6ImNsMjN0dmQ1bzF0a2szYnA2ZGJpNDJvd3YifQ.hLWsrVySzzKYd4I1ISkVMA'
 }).addTo(map);
 
-// var marker = L.marker([51.5, -0.09]).addTo(map);
-// var circle = L.circle([51.508, -0.11], {
-//     color: 'red',
-//     fillColor: '#f03',
-//     fillOpacity: 0.5,
-//     radius: 500
-// }).addTo(map);
-// var polygon = L.polygon([
-//     [51.509, -0.08],
-//     [51.503, -0.06],
-//     [51.51, -0.047]
-// ]).addTo(map);
+var popup = L.popup()
+    .setLatLng([51.513, -0.09])
+    .openOn(map);
+
+const api_url = 'https://realty-in-us.p.rapidapi.com/properties/v2/list-for-sale?city=Atlanta&state_code=GA&offset=0&limit=200&sort=relevance&radius=10';
+
+let firstTime = true;
+
+async function getAddress() {
+  const response = await fetch(api_url, options);
+  
+  const data = await response.json();
+  console.log(data)
+  var prop = data.properties[0]
+  console.log(prop)
+  var address = prop.address
+  var lat = address.lat
+  var lon = address.lon 
+  var bed = prop.beds
+  var bath = prop.baths
+  var price = prop.price
+  var street = address.line
+  var area = address.neighborhood_name
+
+
+//   Always set the view to current lat lon and zoom!
+map.panTo(new L.LatLng(lat, lon));
+popup.setLatLng([lat, lon]);
+popup.setContent(street)
+
+
+marker.setLatLng([lat, lon]);
+
+
+  document.getElementById('county').textContent = area;
+  document.getElementById('price').textContent = price;
+  document.getElementById('bed').textContent = bed;
+  document.getElementById('bath').textContent = bath;
+}
+
+getAddress();
+
+
+
+// map.panTo(new L.LatLng(lat, lon));
+
+// function handleFormSubmit(evt) {
+//     evt.preventDefault();
+//     var address = searchFormInput.value;
+//     getStreetAddress(address);
+// }
+
