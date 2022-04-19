@@ -6,6 +6,7 @@ body {
     max-height: none;
 }
 
+/* Cards that will hold content */
 .card {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     border-width: 1px;
@@ -27,6 +28,8 @@ body {
     margin: auto;
     margin-top: 10px;
 }
+
+/* Maps */
 #map2 {
     width: 100%;
     height: 80%;     
@@ -46,6 +49,7 @@ body {
 input {
     margin: auto;
 }
+/* Bottom Nav section */
 
 footer {
     border: #525E75 5px solid;

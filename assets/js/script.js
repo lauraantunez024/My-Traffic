@@ -33,7 +33,7 @@ const options = {
 // 	.then(response => console.log(response))
 // 	.catch(err => console.error(err));
 
-//abstraction and modularization
+// Handles what happens after user inputs an area
 
 form.addEventListener("submit", function(event) {
     event.preventDefault();
@@ -50,6 +50,8 @@ form.addEventListener("submit", function(event) {
     console.log("here32");
 });
 
+// Sends the user back to the landing page after a search
+
 titleEl.addEventListener("click", function(event) {
     // window.location.reload();
 
@@ -60,7 +62,7 @@ titleEl.addEventListener("click", function(event) {
     mapCont.style.display = "none";
 	sidebar.style.display="none";
 });
-
+// Switches from the traffic map to the realty map
 mapSwitchRealty.addEventListener("click", function() {
 	trafficMap.style.display="none";
 	realtyMap.style.display="block";
@@ -69,6 +71,7 @@ mapSwitchRealty.addEventListener("click", function() {
 	
 
 })
+// Switches from the realty map to the traffic map
 mapSwitchTraffic.addEventListener("click", function() {
 	trafficMap.style.display="block";
 	realtyMap.style.display="none";
@@ -77,7 +80,7 @@ mapSwitchTraffic.addEventListener("click", function() {
 	
 
 })
-
+// Saves the user searches on the landing page
 function  saveSearch(){
     recentSearches.innerHTML = "";
     searchList.forEach(function(address){
@@ -87,7 +90,8 @@ function  saveSearch(){
       recentSearches.appendChild (li);
     });
   }
-// const mymap = L.map('map2').setView([0, 0], 6);
+
+// Drawing the leaflet map
 var accessToken = "pk.eyJ1IjoibGF1cmFhbnR1bmV6MDI0IiwiYSI6ImNsMjN0dmQ1bzF0a2szYnA2ZGJpNDJvd3YifQ.hLWsrVySzzKYd4I1ISkVMA"
 
 var map = L.map('map2', {
@@ -102,7 +106,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     zoomOffset: -1,
     accessToken: 'pk.eyJ1IjoibGF1cmFhbnR1bmV6MDI0IiwiYSI6ImNsMjN0dmQ1bzF0a2szYnA2ZGJpNDJvd3YifQ.hLWsrVySzzKYd4I1ISkVMA'
 }).addTo(map);
-
+// Adding popup feature for leaflet map, will eventually hold address
 var popup = L.popup()
     .setLatLng([51.513, -0.09])
     .openOn(map);
@@ -111,6 +115,7 @@ var popup = L.popup()
 let firstTime = true;
 
 i=0;
+// Uses realty API to populate information of listing on page
 async function getAddress(addy) {
 const api_url = `https://realty-in-us.p.rapidapi.com/properties/v2/list-for-sale?city=${addy}&state_code=GA&offset=0&limit=200&sort=relevance&radius=10`;
   const response = await fetch(api_url, options);
@@ -150,10 +155,8 @@ const api_url = `https://realty-in-us.p.rapidapi.com/properties/v2/list-for-sale
 } 
 
 
+// Handles form submission
 
-// marker.setLatLng([lat, lon]);
-
-// getAddress();
 
 
 function handleFormSubmit(evt) {
@@ -168,8 +171,6 @@ function handleFormSubmit(evt) {
 
 function addEventListeners() {
     searchFormEl.addEventListener("submit", handleFormSubmit);
-    // buttonContainerEl.addEventListener("click", handleButtonClick);
 }
 
 
-// addEventListeners();
