@@ -38,7 +38,7 @@
 
   <main>
 
-    <div class="first-screen card" style="display:none">
+    <div class="first-screen card" >
       <h1 class="text-primary">Find Real Estate Traffic Data</h1>
       <form id="search-form" class="form w-100">
         <input id="search-input" class="form-input w-100" type="text" placeholder="City or Zipcode">
@@ -46,7 +46,7 @@
       </form>
     </div>
 
-    <div class="second-screen container">
+    <div class="second-screen container" style="display:none">
       <!-- navbar code goes here with div class = card -->
       <div class="row">
         <div class="sidebar card col s3">
@@ -55,17 +55,20 @@
           <span id="userinput"></span>
 
 
-          <input id="search-form" type="text" placeholder=" Search...." name="search">
           <div id="api-info">
             <br>
             <p>
               latitude: <span id="lat"></span>°<br />
               longitude: <span id="lon"></span>° <br />
-              Neighborhood: <span id="county"></span> <br />
+              Listing: <span id="houseURL"></span> <br />
+              Area: <span id="area"></span> <br />
               Price: <span id="price"></span> <br />
               Bedrooms: <span id="bed"></span> <br />
               Bathrooms: <span id="bath"></span> <br />
             </p>
+            <br>
+            <br>
+            <p>To return back to the search screen, press "My Traffic" at the top</p>
            
           </div>
         </div>

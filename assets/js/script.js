@@ -35,11 +35,13 @@ const options = {
 form.addEventListener("submit", function(event) {
     event.preventDefault();
     firstScreen.style.display = "none";
-    mapCont.style.display="block";
+    secondScreen.style.display="block";
 	sidebar.style.display="block";
 });
 
 titleEl.addEventListener("click", function(event) {
+    window.location.reload();
+
     event.preventDefault();
 	firstScreen.style.display="block"
     mapCont.style.display = "none";
@@ -101,18 +103,24 @@ async function getAddress() {
 
   console.log(prop)
   var address = prop.address
+  console.log("address: " + address)
 //   var lat = address.lat
 //   var lon = address.lon 
   var bed = prop.beds
+  console.log("bed: " + bed)
   var bath = prop.baths
+  console.log("bath: " + bath)
+  var houseURL = prop.rdc_web_url
+  var area = address.city
+
   var price = prop.price
   var street = address.line
-  var area = address.neighborhood_name
 
-  document.getElementById('county').textContent = area;
+  document.getElementById('houseURL').textContent = houseURL;
   document.getElementById('price').textContent = price;
   document.getElementById('bed').textContent = bed;
   document.getElementById('bath').textContent = bath;
+  document.getElementById('area').textContent = area;
   
 
 
