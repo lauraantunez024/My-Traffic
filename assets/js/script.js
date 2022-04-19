@@ -125,9 +125,7 @@ const api_url = `https://realty-in-us.p.rapidapi.com/properties/v2/list-for-sale
       //   var lat = address.lat
       //   var lon = address.lon 
         var bed = prop.beds
-        console.log("bed: " + bed)
         var bath = prop.baths
-        console.log("bath: " + bath)
         var houseURL = prop.rdc_web_url
         var area = address.city
       
@@ -175,4 +173,3 @@ function addEventListeners() {
 
 
 // addEventListeners();
-

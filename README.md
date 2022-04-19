@@ -16,9 +16,9 @@ Tomtom API: https://developer.tomtom.com/blog/build-different/using-traffic-data
 
 ## Screenshot
 
-![](./assets/screenshots/screenshot-1.png)
+!['info about picture'](./assets/screenshots/screenshot1.png)
 
-![](./assets/screenshots/acreenshot-2.png)
+!['info'](./assets/screenshots/acreenshot-2.png)
 
 
 ## Check it out!
